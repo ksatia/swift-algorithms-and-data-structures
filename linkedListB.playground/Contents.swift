@@ -27,7 +27,7 @@ class LinkedList<T:Equatable> {
         return self.count == 0
     }
     
-    func addItem (value: T) {
+    func addItemToTail (value: T) {
         let node = Node<T>(value: value) // create node with value of passed argument
         if self.self.isEmpty() { // if list is empty, set the head and tail to be our single node
             self.head = node
@@ -83,12 +83,13 @@ class LinkedList<T:Equatable> {
                 self.head = node
             }
             
-            if position == count-1 { //we are inserting a new tail and must adjust the class variables accordingly
+            // This code accounts for adding to the tail. However, our addItemToTail function does just that.
+            /*if position == count-1 { //we are inserting a new tail and must adjust the class variables accordingly
                 self.tail.next = node
                 node.prev = self.tail
                 node.next = nil
                 self.tail = node
-            }
+            }*/
                 
             else { //if it's not the head, traverse the correct nuber of nodes and reassign pointers
                 var currentNode = self.head
@@ -125,10 +126,10 @@ class LinkedList<T:Equatable> {
 
 var list = LinkedList<String>()
 list.isEmpty()
-list.addItem("this")
-list.addItem("is a")
-list.addItem("linked list")
-list.addItem("in swift")
+list.addItemToTail("this")
+list.addItemToTail("is a")
+list.addItemToTail("linked list")
+list.addItemToTail("in swift")
 
 list.printList()
 list.insertItemAtIndex("great", position: 2)
