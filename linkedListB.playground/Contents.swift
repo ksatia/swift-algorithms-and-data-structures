@@ -28,20 +28,17 @@ class LinkedList<T:Equatable> {
     }
     
     func addItem (value: T) {
-        //create a nod with the value of passed argument
-        let node = Node<T>(value: value)
-        //if list is empty, use this node as the head and the tail
-        if self.self.isEmpty() {
+        let node = Node<T>(value: value) // create node with value of passed argument
+        if self.self.isEmpty() { // if list is empty, set the head and tail to be our single node
             self.head = node
             self.tail = node
         }
-        //if the list isn't empty,
-        else {
+        else { // if the list isnt empty, make node previous point to curent tail, make original tail now point to node, and set node to be tail of list
             node.prev = self.tail
             self.tail.next = node
             self.tail = node
         }
-        self.count++
+        self.count++ // always change our counter
     }
     
     func removeItemAtIndex(position: Int) {
@@ -74,6 +71,38 @@ class LinkedList<T:Equatable> {
             self.count-- //always maintain the element count as our operations rely on it for figuring out computations.
         }
     }
+
+    func insertItemAtIndex (value: T, position: Int) {
+        let node = Node<T>(value: value)
+
+        if count>position { // make sure the position exists
+            if position==0 { // we're inserting a new head here
+                //if you are removing the head, have self.head!.next.prev = new node, have new node .next == self.head!.next
+                node.next = self.head
+                self.head.prev = node
+                self.head = node
+            }
+            
+            if position == count-1 { //we are inserting a new tail and must adjust the class variables accordingly
+                self.tail.next = node
+                node.prev = self.tail
+                node.next = nil
+                self.tail = node
+            }
+                
+            else { //if it's not the head, traverse the correct nuber of nodes and reassign pointers
+                var currentNode = self.head
+                for _ in 0...position-1 {
+                    currentNode = currentNode.next!
+                }
+                node.prev = currentNode.prev!
+                node.next = currentNode // we got crashes when implicitly unwrapping node.next. This is because it hadn't been assigned yet and was thus nil.
+                currentNode.prev!.next = node
+                currentNode.prev! = node
+            }
+            count++
+        }
+    }
     
     func printList() {
         var output: String = "["
@@ -86,9 +115,12 @@ class LinkedList<T:Equatable> {
             }
         }
         output += "]"
-        print(output)
+        Swift.print(output)
     }
+    
+   // 9(head) -> 5 -> 7 -> 10(tail)
 }
+
 
 
 var list = LinkedList<String>()
@@ -99,6 +131,7 @@ list.addItem("linked list")
 list.addItem("in swift")
 
 list.printList()
-list.removeItemAtIndex(3)
+list.insertItemAtIndex("great", position: 2)
 list.printList()
-
+list.removeItemAtIndex(2)
+list.printList()
