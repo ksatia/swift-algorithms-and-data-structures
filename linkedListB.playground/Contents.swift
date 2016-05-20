@@ -74,7 +74,6 @@ class LinkedList<T:Equatable> {
 
     func insertItemAtIndex (value: T, position: Int) {
         let node = Node<T>(value: value)
-
         if count>position { // make sure the position exists
             if position==0 { // we're inserting a new head here
                 //if you are removing the head, have self.head!.next.prev = new node, have new node .next == self.head!.next
@@ -105,6 +104,44 @@ class LinkedList<T:Equatable> {
         }
     }
     
+    /* the value parameter below includes an "external parameter name" -> the function call is more explicit by saying "withValue" to the end user
+            but we still use the var name "value" within our function definition */
+    
+    func replaceItemAtIndex (position: Int, withValue value : T) {
+        if self.count>position {
+            var currentNode = self.head // we need the head node to do anything, as linked lists require linear traversal and don't support random access.
+            if position == 0 { // if we are replacing the head node
+                currentNode.value = value
+            }
+            else {
+                for _ in 0...position-1 {
+                    currentNode = currentNode.next!
+                }
+                currentNode.value = value
+            }
+        }
+    }
+    
+    func getItemAtIndex (position: Int) -> T? {
+        if count > position {
+            var currentNode = self.head
+            if position == 0 {
+                return currentNode.value
+            }
+            else {
+                for _ in 0...position-1 {
+                    currentNode = currentNode.next!
+                }
+                return currentNode.value
+            }
+            
+        }
+        else {
+            print ("that position doesn't exist in the linked list")
+            return nil
+        }
+    }
+    
     func printList() {
         var output: String = "["
         var currentNode: Node? = self.head
@@ -118,8 +155,6 @@ class LinkedList<T:Equatable> {
         output += "]"
         Swift.print(output)
     }
-    
-   // 9(head) -> 5 -> 7 -> 10(tail)
 }
 
 
@@ -131,8 +166,12 @@ list.addItemToTail("is a")
 list.addItemToTail("linked list")
 list.addItemToTail("in swift")
 
-list.printList()
 list.insertItemAtIndex("great", position: 2)
 list.printList()
-list.removeItemAtIndex(2)
+list.replaceItemAtIndex(1, withValue: "is an")
+list.replaceItemAtIndex(2, withValue: "awesome")
 list.printList()
+print(list.getItemAtIndex(1))
+
+
+
