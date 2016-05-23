@@ -1,13 +1,9 @@
 import Foundation
 
-class Node<T:Equatable> {
-    var value: T? = nil
-    var next: Node<T>? = nil
-    var prev: Node<T>? = nil
-    
-    init() {
-        
-    }
+class Node<T> {
+     var value: T
+    private var next: Node<T>?
+    private var prev: Node<T>?
     
     init(value: T) {
         self.value = value
@@ -16,8 +12,8 @@ class Node<T:Equatable> {
 
 class LinkedList<T:Equatable> {
     var count: Int = 0
-    var head: Node<T> = Node<T>()
-    var tail: Node<T> = Node<T>()
+    var head: Node<T>
+    var tail: Node<T>
     
     init () {
         
@@ -161,12 +157,12 @@ class LinkedList<T:Equatable> {
 
 var list = LinkedList<String>()
 list.isEmpty()
-list.addItemToTail("this")
-list.addItemToTail("is a")
-list.addItemToTail("linked list")
-list.addItemToTail("in swift")
+list.addItemToTail("testing a")
+list.addItemToTail("sequential")
+list.addItemToTail("linear")
+list.addItemToTail("data struct")
 
-list.insertItemAtIndex("great", position: 2)
+list.insertItemAtIndex("direct access", position: 2)
 list.printList()
 list.replaceItemAtIndex(1, withValue: "is an")
 list.replaceItemAtIndex(2, withValue: "awesome")
