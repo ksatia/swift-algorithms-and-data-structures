@@ -1,29 +1,34 @@
 import Foundation
 
 class Node<T> {
-     var value: T
-    private var next: Node<T>?
-    private var prev: Node<T>?
+    // make value required, as there's no point in having a value-less node
+    var value: T
+    // next and prev can be optional since we may have a single node linked list. should also be private as we never modify them outside of module
+    private var next: Node?
+    private var prev: Node?
     
     init(value: T) {
         self.value = value
     }
 }
 
-class LinkedList<T:Equatable> {
+class LinkedList<T> {
     var count: Int = 0
-    var head: Node<T>
-    var tail: Node<T>
+    // empty list won't have a head or a tail. no longer need to do nil checks.
+    private var head: Node<T>?
+    private var tail: Node<T>?
+    // isEmpty can simply be a computed property, similar to how it is in CollectionType
+    var isEmpty: Bool {
+        return self.count == 0
+    }
+
     
     init () {
         
     }
     
-    func isEmpty() -> Bool {
-        return self.count == 0
-    }
     
-    func addItemToTail (value: T) {
+    func addItemToTail (value: T) { //argument is named value, type is T
         let node = Node<T>(value: value) // create node with value of passed argument
         if self.self.isEmpty() { // if list is empty, set the head and tail to be our single node
             self.head = node
