@@ -56,10 +56,7 @@ class LinkedList<T> {
                 self.head!.next = root
             }
             if index == count {
-                let tail = self.tail
-                tail?.next = newNode
-                newNode.prev = tail
-                self.tail = newNode
+                self.addToTail(value)
             }
             else {
                 for _ in 0...index-1 {
@@ -89,8 +86,13 @@ class LinkedList<T> {
         }
         if var root = head {
             if index == 0 {
-                root.next?.prev = root.prev
+                root.next?.prev = nil
                 self.head = root.next
+                return
+            }
+            if index == count {
+                self.removeItemFromTail()
+                return
             }
             else {
                 for _ in 0...index-1 {
@@ -100,6 +102,7 @@ class LinkedList<T> {
                 root.next?.prev = root.prev
             }
         }
+        count -= 1
     }
     
     func replaceItem (atIndex index: Int) {
@@ -132,5 +135,5 @@ list.addToTail(1)
 list.addToTail(137)
 print(list.sizeOfList)
 list.printList()
-list.insert(5, atIndex: 4)
+list.removeItem(atIndex: 0)
 list.printList()
