@@ -127,8 +127,24 @@ class LinkedList<T> {
         }
     }
     
-    func getValue (atIndex index: Int) {
-        
+    func getValue (atIndex index: Int) -> T {
+        if count < index || index < 0 {
+            print ("index is outside of possible range")
+        }
+        var root = self.head
+//        if var root = self.head {
+            if index == 0 {
+                return (self.head?.value)!
+            }
+            if index == count-1 {
+                return (self.tail?.value)!
+            }
+            else {
+            for _ in 0...index-1 {
+                root = root!.next!
+            }
+            }
+            return root!.value
     }
     
     
@@ -155,3 +171,4 @@ print(list.sizeOfList)
 list.printList()
 list.replaceItem(atIndex: 1, withValue: 9)
 list.printList()
+print(list.getValue(atIndex: 1))
