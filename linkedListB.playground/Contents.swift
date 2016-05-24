@@ -105,8 +105,26 @@ class LinkedList<T> {
         count -= 1
     }
     
-    func replaceItem (atIndex index: Int) {
-        
+    func replaceItem (atIndex index: Int, withValue value:T) {
+        if count < index || index < 0 {
+            print ("index isn't within possible range")
+        }
+        if var root = self.head {
+            if index == 0 {
+                root.value = value
+                return
+            }
+            if index == count-1 {
+                self.tail?.value = value
+                return
+            }
+            else {
+                for _ in 0...index-1 {
+                    root = root.next!
+                }
+                    root.value = value
+            }
+        }
     }
     
     func getValue (atIndex index: Int) {
@@ -135,5 +153,5 @@ list.addToTail(1)
 list.addToTail(137)
 print(list.sizeOfList)
 list.printList()
-list.removeItem(atIndex: 0)
+list.replaceItem(atIndex: 1, withValue: 9)
 list.printList()
