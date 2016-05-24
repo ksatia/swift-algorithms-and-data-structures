@@ -1,178 +1,136 @@
-import Foundation
+//: Playground - noun: a place where people can play
 
-class Node<T> {
-    // make value required, as there's no point in having a value-less node
+import UIKit
+
+class LinkedListNode <T> {
     var value: T
-    // next and prev can be optional since we may have a single node linked list. should also be private as we never modify them outside of module
-    private var next: Node?
-    private var prev: Node?
+    private var next: LinkedListNode?
+    private var prev: LinkedListNode?
     
-    init(value: T) {
+    init (value:T ) {
         self.value = value
     }
+    
 }
 
 class LinkedList<T> {
-    var count: Int = 0
-    // empty list won't have a head or a tail. no longer need to do nil checks.
-    private var head: Node<T>?
-    private var tail: Node<T>?
+    typealias Node = LinkedListNode<T>
+    private var count = 0
+    private var head: Node?
+    private var tail: Node?
+    
     // isEmpty can simply be a computed property, similar to how it is in CollectionType
-    var isEmpty: Bool {
+    internal var isEmpty: Bool {
         return self.count == 0
     }
-
     
-    init () {
+    internal var sizeOfList: Int {
+        return count
+    }
+    
+    
+    func addToTail (value:T) {
+        let newNode = LinkedListNode(value: value)
+        if let tail = tail {
+            tail.next = newNode
+            newNode.prev = tail
+            self.tail = newNode
+        }
+        else {
+            head = newNode
+            tail = newNode
+        }
+        count += 1
+    }
+    
+    //external parameter name being used here. "index" is used internally, argument is named "atIndex" when accessed through API
+    func insert (value: T, atIndex index: Int) {
+        if count < index || index < 0 {
+            print ("index is outside of range")
+            return
+        }
+        let newNode = LinkedListNode(value: value)
+        if var root = head {
+            if index == 0 {
+                self.head = newNode
+                self.head!.next = root
+            }
+            if index == count {
+                let tail = self.tail
+                tail?.next = newNode
+                newNode.prev = tail
+                self.tail = newNode
+            }
+            else {
+                for _ in 0...index-1 {
+                    root = root.next!
+                }
+                root.prev?.next = newNode
+                newNode.prev = root.prev
+                root.prev = newNode
+                newNode.next = root
+            }
+        }
+        count += 1
+    }
+    
+    func removeItemFromTail () {
+        if let tail = self.tail {
+            tail.prev?.next = tail.next
+            self.tail = tail.prev
+        }
+        count -= 1
+    }
+    
+    func removeItem (atIndex index:Int) {
+        if count < index || index < 0 {
+            print("index isn't within possible range")
+            return
+        }
+        if var root = head {
+            if index == 0 {
+                root.next?.prev = root.prev
+                self.head = root.next
+            }
+            else {
+                for _ in 0...index-1 {
+                    root = root.next!
+                }
+                root.prev?.next = root.next
+                root.next?.prev = root.prev
+            }
+        }
+    }
+    
+    func replaceItem (atIndex index: Int) {
+        
+    }
+    
+    func getValue (atIndex index: Int) {
         
     }
     
     
-    func addItemToTail (value: T) { //argument is named value, type is T
-        let node = Node<T>(value: value) // create node with value of passed argument
-        if self.self.isEmpty() { // if list is empty, set the head and tail to be our single node
-            self.head = node
-            self.tail = node
-        }
-        else { // if the list isnt empty, make node previous point to curent tail, make original tail now point to node, and set node to be tail of list
-            node.prev = self.tail
-            self.tail.next = node
-            self.tail = node
-        }
-        self.count++ // always change our counter
-    }
-    
-    func removeItemAtIndex(position: Int) {
-        if self.count > position {   //make sure position exists
-            if self.count != 1 { //this means there are at least 2 elements in the linked list. Int (position) can be 0 at the lowest. Count is greater than 0, and if it's not 1, it
-                //must be 2 or greater.                /
-                if position == 0 { //item to remove is the head so we must remove connections to the next one, and make the next one the head.
-                    //let newHead = self.head.next!
-                    self.head = self.head.next! //pointers to further nodes are maintained, we simply dropped out the current head and reassigned the next one
-                }
-                if position == self.count-1 { //item to remove is the tail so we must get the previous node and make that the new tail.
-                    self.tail.prev!.next = nil //tail points to nothing, so have tail->previous have the next node be nil
-                    self.tail = self.tail.prev!
-                }
-                if (position > 0 && position < count-1) {
-                    var currentNode = self.head
-                    for _ in 0...position-1 {
-                        currentNode = currentNode.next!
-                    }
-                    //the node being stored in currentNode is now the node at the index to be deleted. Link the next and prev nodes and remove from list
-                    currentNode.next!.prev = currentNode.prev //make the next node->prev to previous node
-                    currentNode.prev!.next = currentNode.next //make previous node->next point to next node
-                    }
-                }
-            if self.count == 1 { //we have a single element and we're now removing it. We won't set linked list to nil, but rather give it an initialized head that has no
-                //data for next, prev or value properties
-                self.head = Node<T>()
-                self.tail = Node<T>()        //if we were making this circular, then we would also have a blank node for the tail, as one node can be both a head and tail
-            }
-            self.count-- //always maintain the element count as our operations rely on it for figuring out computations.
-        }
-    }
-
-    func insertItemAtIndex (value: T, position: Int) {
-        let node = Node<T>(value: value)
-        if count>position { // make sure the position exists
-            if position==0 { // we're inserting a new head here
-                //if you are removing the head, have self.head!.next.prev = new node, have new node .next == self.head!.next
-                node.next = self.head
-                self.head.prev = node
-                self.head = node
-            }
-            
-            // This code accounts for adding to the tail. However, our addItemToTail function does just that.
-            /*if position == count-1 { //we are inserting a new tail and must adjust the class variables accordingly
-                self.tail.next = node
-                node.prev = self.tail
-                node.next = nil
-                self.tail = node
-            }*/
-                
-            else { //if it's not the head, traverse the correct nuber of nodes and reassign pointers
-                var currentNode = self.head
-                for _ in 0...position-1 {
-                    currentNode = currentNode.next!
-                }
-                node.prev = currentNode.prev!
-                node.next = currentNode // we got crashes when implicitly unwrapping node.next. This is because it hadn't been assigned yet and was thus nil.
-                currentNode.prev!.next = node
-                currentNode.prev! = node
-            }
-            count++
-        }
-    }
-    
-    /* the value parameter below includes an "external parameter name" -> the function call is more explicit by saying "withValue" to the end user
-            but we still use the var name "value" within our function definition */
-    
-    func replaceItemAtIndex (position: Int, withValue value : T) {
-        if self.count>position {
-            var currentNode = self.head // we need the head node to do anything, as linked lists require linear traversal and don't support random access.
-            if position == 0 { // if we are replacing the head node
-                currentNode.value = value
-            }
-            else {
-                for _ in 0...position-1 {
-                    currentNode = currentNode.next!
-                }
-                currentNode.value = value
-            }
-        }
-    }
-    
-    func getItemAtIndex (position: Int) -> T? {
-        if count > position {
-            var currentNode = self.head
-            if position == 0 {
-                return currentNode.value
-            }
-            else {
-                for _ in 0...position-1 {
-                    currentNode = currentNode.next!
-                }
-                return currentNode.value
-            }
-            
-        }
-        else {
-            print ("that position doesn't exist in the linked list")
-            return nil
-        }
-    }
-    
     func printList() {
-        var output: String = "["
+        var output: String = ""
         var currentNode: Node? = self.head
         while (currentNode != nil) {
             output += String(currentNode!.value)
             currentNode = currentNode!.next
             if (currentNode != nil) {
-                output += " "
+                output += " -> "
             }
         }
-        output += "]"
         Swift.print(output)
     }
 }
 
-
-
-var list = LinkedList<String>()
-list.isEmpty()
-list.addItemToTail("testing a")
-list.addItemToTail("sequential")
-list.addItemToTail("linear")
-list.addItemToTail("data struct")
-
-list.insertItemAtIndex("direct access", position: 2)
+var list = LinkedList<Int> ()
+list.addToTail(3)
+list.addToTail(8)
+list.addToTail(1)
+list.addToTail(137)
+print(list.sizeOfList)
 list.printList()
-list.replaceItemAtIndex(1, withValue: "is an")
-list.replaceItemAtIndex(2, withValue: "awesome")
+list.insert(5, atIndex: 4)
 list.printList()
-print(list.getItemAtIndex(1))
-
-
-
