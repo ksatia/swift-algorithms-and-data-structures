@@ -26,7 +26,7 @@ class Stack <T> {
     }
     
     func printStack() {
-        list.printList()
+        print(list)
     }
 
 }

@@ -175,35 +175,19 @@ func generate() -> AnyGenerator<Node> {
 
 extension LinkedList: CustomStringConvertible {
     var description: String {
+        var currentIndex: Int = 0
         var description: String = ""
         if var currentNode = self.head {
        // while currentNode != nil {
             for _ in 0...count-1 {
-            description += (String(currentNode.value) + " " )
-            if let nextNode = currentNode.next {
+            //description += (String(currentNode.value) + " " )
+                description += ("\"" + (String(currentNode.value)) + "\"" + " is at index: \(currentIndex)\n")
+                if let nextNode = currentNode.next {
                 currentNode = nextNode
+                currentIndex += 1
             }
             }
         }
         return description
 }
 }
-
-        
-        
-        
-        
-        
-//            if var currentNode = head {
-//                description += String(currentNode.value)
-//                for _ in 0...self.count-1 {
-//                while var node = currentNode.next {
-//                    description += (" " + String(node.value))    //String("(\currentNode.value) ")
-//                    node = node.next!
-//                }
-//                }
-//        }
-//        return description
-//        }
-//    }
-
