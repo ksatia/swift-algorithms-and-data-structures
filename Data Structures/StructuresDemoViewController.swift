@@ -8,15 +8,17 @@
 
 import UIKit
 
-var list = LinkedList<String> ()
+var linkedList = LinkedList<String> ()
 var newStack = Stack<Int> ()
+var newQueue = Queue<String> ()
 
 class StructuresDemoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.listOperations()
-        self.stackOperations()
+        //self.stackOperations()
+        self.queueOperations()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,22 +26,30 @@ class StructuresDemoViewController: UIViewController {
     }
 
     func listOperations () {
-        list.addToTail("testing")
-        list.addToTail("a")
-        list.addToTail("linked list")
-        list.addToTail("in swift")
+        linkedList.addToTail("testing")
+        linkedList.addToTail("a")
+        linkedList.addToTail("linked list")
+        linkedList.addToTail("in swift")
         
-        list.removeItem(atIndex: 2)
-        list.insert("stack", atIndex: 2)
-        print(list)
+        linkedList.removeItem(atIndex: 2)
+        print(linkedList)
     }
     
     func stackOperations () {
         newStack.push(5)
         newStack.push(6)
         newStack.push(197)
-        newStack.printStack()
         print(newStack.peek())
-
+        print(newStack)
+    }
+    
+    func queueOperations () {
+        newQueue.enqueue("this")
+        newQueue.enqueue("is")
+        newQueue.enqueue("a")
+        newQueue.enqueue("queue")
+        newQueue.enqueue("test")
+        newQueue.dequeue()
+        print(newQueue)
     }
 }

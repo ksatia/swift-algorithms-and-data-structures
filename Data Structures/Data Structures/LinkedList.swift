@@ -122,8 +122,30 @@ class LinkedList<T> {
             }
         }
     }
+
     
     func getValue (atIndex index: Int) -> T {
+//        guard  (count < index || index < 0) else {
+//            switch index {
+//            case index == 0:
+//                if let head = self.head {
+//                    return head.value
+//                }
+//            case index == count-1:
+//                if let tail = self.tail {
+//                    return tail.value
+//                }
+//            default:
+//                if var currentNode = head {
+//                    for _ in 0...index-1 {
+//                        currentNode = currentNode.next!
+//                    }
+//                    return currentNode.value
+//                }
+//            }
+//        }
+//    }
+
         if count < index || index < 0 {
             print ("index is outside of possible range")
         }
@@ -142,6 +164,13 @@ class LinkedList<T> {
         }
         return root!.value
     }
+
+    
+    
+    func printList () {
+        print(self)
+    }
+    
 }
 
 

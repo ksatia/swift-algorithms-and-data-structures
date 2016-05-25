@@ -14,6 +14,7 @@
 		2ABC35271CF4CA530093B18A /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC35261CF4CA530093B18A /* LinkedList.swift */; };
 		2ABC352B1CF5190C0093B18A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC352A1CF5190C0093B18A /* Stack.swift */; };
 		2ABC35301CF51AD50093B18A /* StructuresDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC352F1CF51AD50093B18A /* StructuresDemoViewController.swift */; };
+		2ABC35321CF623790093B18A /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC35311CF623790093B18A /* Queue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2ABC35261CF4CA530093B18A /* LinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		2ABC352A1CF5190C0093B18A /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		2ABC352F1CF51AD50093B18A /* StructuresDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StructuresDemoViewController.swift; path = ../StructuresDemoViewController.swift; sourceTree = "<group>"; };
+		2ABC35311CF623790093B18A /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				2ABC35121CF4C9FF0093B18A /* AppDelegate.swift */,
 				2ABC352F1CF51AD50093B18A /* StructuresDemoViewController.swift */,
+				2ABC35331CF6237E0093B18A /* Queue */,
 				2ABC352C1CF519110093B18A /* Stack */,
 				2ABC35281CF4CA5E0093B18A /* Linked List */,
 				2ABC35291CF4CA690093B18A /* Support Files */,
@@ -92,6 +95,14 @@
 				2ABC352A1CF5190C0093B18A /* Stack.swift */,
 			);
 			name = Stack;
+			sourceTree = "<group>";
+		};
+		2ABC35331CF6237E0093B18A /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				2ABC35311CF623790093B18A /* Queue.swift */,
+			);
+			name = Queue;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2ABC352B1CF5190C0093B18A /* Stack.swift in Sources */,
+				2ABC35321CF623790093B18A /* Queue.swift in Sources */,
 				2ABC35271CF4CA530093B18A /* LinkedList.swift in Sources */,
 				2ABC35251CF4CA370093B18A /* LinkedListNode.swift in Sources */,
 				2ABC35131CF4C9FF0093B18A /* AppDelegate.swift in Sources */,

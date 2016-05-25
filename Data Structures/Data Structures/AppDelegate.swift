@@ -6,6 +6,10 @@
 //  Copyright © 2016 Karan Satia. All rights reserved.
 //
 
+//error log
+//print queue after dequeueing creates duplicate last element, fix this
+
+
 import UIKit
 
 @UIApplicationMain
@@ -46,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 
