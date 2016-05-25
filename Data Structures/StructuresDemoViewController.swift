@@ -15,8 +15,8 @@ class StructuresDemoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.listOperations()
-        //self.stackOperations()
+        //self.listOperations()
+        self.stackOperations()
     }
 
     override func didReceiveMemoryWarning() {

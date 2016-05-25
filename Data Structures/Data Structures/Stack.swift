@@ -20,13 +20,14 @@ class Stack <T> {
         list.removeItemFromTail()
     }
     
-    func peek () {
-        let listSize = list.sizeOfList
-        list.getValue(atIndex: listSize)
+    func peek () -> T {
+        let peekIndex = list.sizeOfList-1
+        return list.getValue(atIndex: peekIndex)
     }
     
     func printStack() {
         print(list)
     }
 
+    
 }

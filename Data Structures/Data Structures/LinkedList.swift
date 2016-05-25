@@ -142,22 +142,11 @@ class LinkedList<T> {
         }
         return root!.value
     }
-    
-    
-//    func printList() {
-//        var output: String = ""
-//        var currentNode: Node? = self.head
-//        while (currentNode != nil) {
-//            output += String(currentNode!.value)
-//            currentNode = currentNode!.next
-//            if (currentNode != nil) {
-//                output += " -> "
-//            }
-//        }
-//        Swift.print(output)
-//    }
-    
 }
+
+
+//MARK "PROTOCOL EXTENSIONS"
+
 
 extension LinkedList : SequenceType {
 func generate() -> AnyGenerator<Node> {
@@ -180,7 +169,7 @@ extension LinkedList: CustomStringConvertible {
         if var currentNode = self.head {
        // while currentNode != nil {
             for _ in 0...count-1 {
-            //description += (String(currentNode.value) + " " )
+                //description += (String(currentNode.value) + " " )
                 description += ("\"" + (String(currentNode.value)) + "\"" + " is at index: \(currentIndex)\n")
                 if let nextNode = currentNode.next {
                 currentNode = nextNode
