@@ -16,9 +16,9 @@ class StructuresDemoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.listOperations()
+        self.listOperations()
         //self.stackOperations()
-        self.queueOperations()
+        //self.queueOperations()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +32,8 @@ class StructuresDemoViewController: UIViewController {
         linkedList.addToTail("in swift")
         
         linkedList.removeItem(atIndex: 2)
-        print(linkedList)
+        //use subscript
+        print(linkedList[2])
     }
     
     func stackOperations () {

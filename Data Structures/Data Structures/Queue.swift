@@ -26,7 +26,7 @@ class Queue <T> {
     
     // retrieve object at front of queue
     func peek () -> T {
-        return list.getValue(atIndex: 0)
+        return list[0]
     }
 }
 

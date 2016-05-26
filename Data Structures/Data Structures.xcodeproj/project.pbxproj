@@ -15,6 +15,7 @@
 		2ABC352B1CF5190C0093B18A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC352A1CF5190C0093B18A /* Stack.swift */; };
 		2ABC35301CF51AD50093B18A /* StructuresDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC352F1CF51AD50093B18A /* StructuresDemoViewController.swift */; };
 		2ABC35321CF623790093B18A /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC35311CF623790093B18A /* Queue.swift */; };
+		2ABC35351CF64D5D0093B18A /* lowLevelStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC35341CF64D5D0093B18A /* lowLevelStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		2ABC352A1CF5190C0093B18A /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		2ABC352F1CF51AD50093B18A /* StructuresDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StructuresDemoViewController.swift; path = ../StructuresDemoViewController.swift; sourceTree = "<group>"; };
 		2ABC35311CF623790093B18A /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		2ABC35341CF64D5D0093B18A /* lowLevelStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lowLevelStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				2ABC352A1CF5190C0093B18A /* Stack.swift */,
+				2ABC35341CF64D5D0093B18A /* lowLevelStack.swift */,
 			);
 			name = Stack;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				2ABC35321CF623790093B18A /* Queue.swift in Sources */,
 				2ABC35271CF4CA530093B18A /* LinkedList.swift in Sources */,
 				2ABC35251CF4CA370093B18A /* LinkedListNode.swift in Sources */,
+				2ABC35351CF64D5D0093B18A /* lowLevelStack.swift in Sources */,
 				2ABC35131CF4C9FF0093B18A /* AppDelegate.swift in Sources */,
 				2ABC35301CF51AD50093B18A /* StructuresDemoViewController.swift in Sources */,
 			);

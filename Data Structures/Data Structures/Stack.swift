@@ -22,7 +22,7 @@ class Stack <T> {
     
     func peek () -> T {
         let peekIndex = list.sizeOfList-1
-        return list.getValue(atIndex: peekIndex)
+        return list[peekIndex]
     }
 
     func print (){
