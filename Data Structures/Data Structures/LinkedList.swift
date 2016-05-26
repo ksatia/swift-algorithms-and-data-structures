@@ -124,7 +124,9 @@ class LinkedList<T> {
     }
 
     //change value retrieval function to a subscript
+    //we can actuall get and set. If you don't include either keyword, it is read-only.
     subscript (index: Int) -> T {
+        get {
         //guard statement to catch invalid case. "Guard" the valid case and if not, it's invalid and do something.
         guard  index >= 0 && index < count else {
             fatalError("Index out of range 0 ..< \(count)")
@@ -141,25 +143,12 @@ class LinkedList<T> {
             }
             return (currentNode?.value)!
         }
+        }
+        set (value) {
+            return self.replaceItem(atIndex: index, withValue: value)
+        }
     }
-//        if var currentNode = head {
-//            switch index {
-//            case 0:
-//                if let head = self.head {
-//                    return head.value
-//                }
-//            case count-1:
-//                if let tail = self.tail {
-//                    return tail.value
-//                }
-//            default:
-//                    for _ in 0...index-1 {
-//                        currentNode = currentNode.next!
-//                    }
-//                }
-//            return currentNode.value
-//            }
-//        }
+
 
 
     func printList () {

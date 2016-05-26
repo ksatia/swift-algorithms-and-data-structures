@@ -35,4 +35,3 @@ extension Stack: CustomStringConvertible {
         return list.description
     }
 }
-

@@ -31,9 +31,17 @@ class StructuresDemoViewController: UIViewController {
         linkedList.addToTail("linked list")
         linkedList.addToTail("in swift")
         
-        linkedList.removeItem(atIndex: 2)
-        //use subscript
-        print(linkedList[2])
+        //linkedList.removeItem(atIndex: 2)
+        
+        //test subscript setter and getter
+        print("The value at this location is \"\(linkedList[2])\"\n")
+        
+        linkedList[0] = "creating"
+        
+        print(linkedList)
+        
+        //make sure sizeOfList var returns properly in a subscript GET
+        print(linkedList[(linkedList.sizeOfList-1)])
     }
     
     func stackOperations () {
