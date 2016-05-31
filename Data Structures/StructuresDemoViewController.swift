@@ -16,7 +16,7 @@ class StructuresDemoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.listOperations()
+        //self.listOperations()
         //self.stackOperations()
         //self.queueOperations()
     }
