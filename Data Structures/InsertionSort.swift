@@ -31,16 +31,13 @@ class InsertionSort: NSObject {
         // iterate over each element, ignoring the first one since it's sorted by itself
         for i in 1..<array.count {
             // for first iteration, n = 1, then 2...
-            var n = i
-            // we never need to decrement to hit the first element since it's always already sorted ( > 0) and while the index 
-            // we are looking at is less than the immediately left element, swap them so that they're in ascending order
-            while n > 0 && array[n] < array[n-1] {
-                swap(&array, firstIndex: (n-1), secondIndex: n)
-                n -= 1
+            for n in i.stride(to: 0, by: -1) {
+                if array[n] < array[n-1] {
+                    swap(&array, firstIndex: n, secondIndex: (n-1))
+                }
             }
+            
         }
         return array
     }
-    
-    
 }

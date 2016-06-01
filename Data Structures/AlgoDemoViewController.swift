@@ -29,7 +29,7 @@ class AlgoDemoViewController: UIViewController {
     }
 
     func insertionSort () {
-        var unsortedArray = [9,4,5,1,900,399]
+        var unsortedArray = [9,4,5,1,900,-399]
         print(insertionSorter.insertionSort(&unsortedArray))
     }
     /*
