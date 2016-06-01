@@ -18,6 +18,7 @@
 		2ABC35351CF64D5D0093B18A /* lowLevelStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC35341CF64D5D0093B18A /* lowLevelStack.swift */; };
 		2ABC35371CFDFCAA0093B18A /* SelectionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC35361CFDFCAA0093B18A /* SelectionSort.swift */; };
 		2ABC353B1CFE08BE0093B18A /* AlgoDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC353A1CFE08BE0093B18A /* AlgoDemoViewController.swift */; };
+		2ABC353D1CFE1F5D0093B18A /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC353C1CFE1F5D0093B18A /* InsertionSort.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		2ABC35341CF64D5D0093B18A /* lowLevelStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lowLevelStack.swift; sourceTree = "<group>"; };
 		2ABC35361CFDFCAA0093B18A /* SelectionSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionSort.swift; sourceTree = "<group>"; };
 		2ABC353A1CFE08BE0093B18A /* AlgoDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgoDemoViewController.swift; sourceTree = "<group>"; };
+		2ABC353C1CFE1F5D0093B18A /* InsertionSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				2ABC35361CFDFCAA0093B18A /* SelectionSort.swift */,
+				2ABC353C1CFE1F5D0093B18A /* InsertionSort.swift */,
 			);
 			name = Sorting;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2ABC352B1CF5190C0093B18A /* Stack.swift in Sources */,
+				2ABC353D1CFE1F5D0093B18A /* InsertionSort.swift in Sources */,
 				2ABC35321CF623790093B18A /* Queue.swift in Sources */,
 				2ABC35271CF4CA530093B18A /* LinkedList.swift in Sources */,
 				2ABC35251CF4CA370093B18A /* LinkedListNode.swift in Sources */,
