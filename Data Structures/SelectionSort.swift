@@ -9,6 +9,9 @@
 import UIKit
 
 class SelectionSort: NSObject {
+    // selection sort starts at the first index in a collection and compares it to all others. We try to find the minimum index. If the first index is not the minimum, we swap them so that the smallest element in the array is now first. Once the first swap is complete, we know the first element is now the smallest. We can now focus on everything EXCEPT the first element. Once the second iteration is done, we can focus on everything EXCEPT the first & second element, etc.
+    // we are SELECTING the lowest element, then the next lowest, then the next lowest, and placing them accordingly. 
+    
 
     // simple swap function using reassignment instead of memory swapping
     func swap (inout array: [Int], firstIndex: Int, secondIndex:Int) {

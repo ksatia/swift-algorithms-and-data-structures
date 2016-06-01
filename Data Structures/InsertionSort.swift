@@ -10,13 +10,9 @@ import UIKit
 
 class InsertionSort: NSObject {
 
-    /*
-     DECREMENTING SYNTAX FOR SWIFT
-    func insertionSort {
-        for n in 10.stride(to: 0, by: -1) {
-            while current item in unsorted array is less than n, call a swap function
-        }
-    */
+    // insertion sort takes an array and divides it into a sorted and unsorted portion. We can disregard the first element, since a single element collection is already sorted. We then take the next index in the unsorted portion and compare it to the rightmost element of the sorted portion. If it is smaller, we move down an element to the left and compare it there, until we find the correct place to INSERT it.
+    
+    
     func swap (inout array: [Int], firstIndex: Int, secondIndex:Int) {
         let temp = array[firstIndex]
         array[firstIndex] = array[secondIndex]
