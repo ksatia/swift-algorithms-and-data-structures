@@ -30,7 +30,9 @@ class InsertionSort: NSObject {
         
         // iterate over each element, ignoring the first one since it's sorted by itself
         for i in 1..<array.count {
-            // for first iteration, n = 1, then 2...
+            // take current index element and look at all elements before it. If our current index element is less than previous ones,
+            // call our swap function. Move down an element and continue. When we've looked at all elements, we return to 
+            // the first for loop and move to the next element, expanding the "sorted" portion and reducing size of "unsorted" portion.
             for n in i.stride(to: 0, by: -1) {
                 if array[n] < array[n-1] {
                     swap(&array, firstIndex: n, secondIndex: (n-1))
