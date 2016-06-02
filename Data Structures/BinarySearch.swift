@@ -43,21 +43,8 @@ class BinarySearch: NSObject {
             return _resursiveBinarySearch(array, value: value, low: low, high: midPoint-1)
         case let midPoint where array[midPoint] < value:
             return _resursiveBinarySearch(array, value: value, low: midPoint+1, high: high)
-        case let midPoint where array[midPoint] == value:
-            return midPoint
         default:
             return mid
         }
-        
-        /*        if array[mid] > value {
-                    return _resursiveBinarySearch(array, value: value, low: low, high: mid-1)
-                }
-                else if array[mid] < value {
-                    return _resursiveBinarySearch(array, value: value, low: mid+1, high: high)
-                }
-                else {
-                    return mid
-                }
-        */
     }
 }
