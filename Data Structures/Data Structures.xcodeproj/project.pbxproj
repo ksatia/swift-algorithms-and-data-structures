@@ -19,6 +19,7 @@
 		2ABC35371CFDFCAA0093B18A /* SelectionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC35361CFDFCAA0093B18A /* SelectionSort.swift */; };
 		2ABC353B1CFE08BE0093B18A /* AlgoDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC353A1CFE08BE0093B18A /* AlgoDemoViewController.swift */; };
 		2ABC353D1CFE1F5D0093B18A /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC353C1CFE1F5D0093B18A /* InsertionSort.swift */; };
+		2ABC353F1CFFC7100093B18A /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC353E1CFFC70F0093B18A /* BinarySearch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		2ABC35361CFDFCAA0093B18A /* SelectionSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionSort.swift; sourceTree = "<group>"; };
 		2ABC353A1CFE08BE0093B18A /* AlgoDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgoDemoViewController.swift; sourceTree = "<group>"; };
 		2ABC353C1CFE1F5D0093B18A /* InsertionSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
+		2ABC353E1CFFC70F0093B18A /* BinarySearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		2ABC35381CFDFCB00093B18A /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				2ABC35401CFFC7140093B18A /* Searching */,
 				2ABC35391CFDFCBF0093B18A /* Sorting */,
 			);
 			name = Algorithms;
@@ -131,6 +134,14 @@
 				2ABC353C1CFE1F5D0093B18A /* InsertionSort.swift */,
 			);
 			name = Sorting;
+			sourceTree = "<group>";
+		};
+		2ABC35401CFFC7140093B18A /* Searching */ = {
+			isa = PBXGroup;
+			children = (
+				2ABC353E1CFFC70F0093B18A /* BinarySearch.swift */,
+			);
+			name = Searching;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +218,7 @@
 				2ABC352B1CF5190C0093B18A /* Stack.swift in Sources */,
 				2ABC353D1CFE1F5D0093B18A /* InsertionSort.swift in Sources */,
 				2ABC35321CF623790093B18A /* Queue.swift in Sources */,
+				2ABC353F1CFFC7100093B18A /* BinarySearch.swift in Sources */,
 				2ABC35271CF4CA530093B18A /* LinkedList.swift in Sources */,
 				2ABC35251CF4CA370093B18A /* LinkedListNode.swift in Sources */,
 				2ABC353B1CFE08BE0093B18A /* AlgoDemoViewController.swift in Sources */,

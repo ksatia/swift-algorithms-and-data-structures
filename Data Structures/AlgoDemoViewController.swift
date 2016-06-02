@@ -10,6 +10,7 @@ import UIKit
 
 var selectionSorter = SelectionSort()
 var insertionSorter = InsertionSort()
+var binarySearcher = BinarySearch()
 
 class AlgoDemoViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class AlgoDemoViewController: UIViewController {
         super.viewDidLoad()
         self.selectionSort()
         self.insertionSort()
+        self.binarySearch()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,12 +34,11 @@ class AlgoDemoViewController: UIViewController {
         var unsortedArray = [9,4,5,1,900,-399]
         print(insertionSorter.insertionSort(&unsortedArray))
     }
-    /*
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
+    func binarySearch () {
+        var unsearchedArray = [9,4,5,1,900,-399]
+        // must sort the collection first
+        insertionSorter.insertionSort(&unsearchedArray)
+        print(binarySearcher.binarySearch(unsearchedArray, value: 99999))
+    }
 }
