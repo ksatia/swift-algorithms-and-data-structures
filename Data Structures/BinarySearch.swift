@@ -23,15 +23,13 @@ class BinarySearch: NSObject {
         guard array.count>1 else { return nil }
         var low = 0, high = array.count
         while low<high {
-            let midpoint = (low+high)/2
-            if array[midpoint] > value {
-                high = midpoint - 1
-            }
-            else if array[midpoint] < value {
-                low = midpoint + 1
-            }
-            else if array[midpoint] == value {
-                return midpoint
+            switch (low+high)/2 {
+            case let mid where array[mid] > value:
+                high = (mid-1)
+            case let mid where array[mid] < value:
+                low = (mid+1)
+            case let mid:
+                return mid
             }
         }
         return nil
