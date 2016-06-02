@@ -36,9 +36,10 @@ class AlgoDemoViewController: UIViewController {
     }
 
     func binarySearch () {
-        var unsearchedArray = [9,4,5,1,900,-399]
+        var unsearchedArray = [9,4,5,1,900,-399, -400]
         // must sort the collection first
         insertionSorter.insertionSort(&unsearchedArray)
-        print(binarySearcher.binarySearch(unsearchedArray, value: 5))
-    }
+        print(binarySearcher.recursiveBinarySearch(unsearchedArray, value: 5))
+}
+    
 }
