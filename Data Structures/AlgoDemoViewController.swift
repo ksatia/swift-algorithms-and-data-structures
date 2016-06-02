@@ -40,6 +40,7 @@ class AlgoDemoViewController: UIViewController {
         // must sort the collection first
         insertionSorter.insertionSort(&unsearchedArray)
         print(binarySearcher.recursiveBinarySearch(unsearchedArray, value: 5))
+        print(binarySearcher.genericRecursiveBinarySearch(unsearchedArray, value: 9, range: 0...unsearchedArray.count))
 }
     
 }
