@@ -124,7 +124,7 @@ class LinkedList<T> {
     }
 
     //change value retrieval function to a subscript
-    //we can actuall get and set. If you don't include either keyword, it is read-only.
+    //we can actually get and set. If you don't include either keyword, it is read-only.
     subscript (index: Int) -> T {
         get {
         //guard statement to catch invalid case. "Guard" the valid case and if not, it's invalid and do something.

@@ -11,6 +11,8 @@ import UIKit
 var selectionSorter = SelectionSort()
 var insertionSorter = InsertionSort()
 var binarySearcher = BinarySearch()
+let tree = NodelessBST<Int>(array: [4,9,12,20,3,1])
+let tree2 = BinarySearchTree<Int>(array: [234,45,6,1,900,956,901,2])
 
 class AlgoDemoViewController: UIViewController {
     
@@ -19,6 +21,7 @@ class AlgoDemoViewController: UIViewController {
         self.selectionSort()
         self.insertionSort()
         self.binarySearch()
+        self.binaryTree()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,4 +46,8 @@ class AlgoDemoViewController: UIViewController {
         print(binarySearcher.genericRecursiveBinarySearch(unsearchedArray, value: 9, range: 0...unsearchedArray.count))
 }
     
+    func binaryTree () {
+        print(tree)
+        print(tree2)
+    }
 }
