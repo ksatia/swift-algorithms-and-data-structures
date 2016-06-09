@@ -20,9 +20,9 @@ class NodelessBST<T: Comparable> {
     // Deletion can be tricky. If the node being deleted has only one child, it's simple. Have the child now point to the parent.parent and just remove the current node (same as a linked list). If there are two children, however, it is more complex. We must replace the node being removed by the child that is larger than the node (in a balanced BST, this would always be the right child).
     
     var value: T
-    var parent: NodelessBST?
     var left: NodelessBST?
     var right: NodelessBST?
+    var parent: NodelessBST?
     
     init(value: T) {
         self.value = value
@@ -112,6 +112,104 @@ class NodelessBST<T: Comparable> {
                 right = NodelessBST(value: value)
                 right?.parent = parent
             }
+        }
+    }
+    // WE CAN WRAP UP DELETION INTO ONE HUGE FUNCTION BUT LETS REFACTOR INTO IMPORTANT FUNCTIONALITIES - 1. search for the node in question, store that in a variable we can pass to our deletion. The argument value has a pointer to the correct memory address.
+    // 2. find out if it has a left child, a right child, no children, or both children.
+    // 3. call the proper deletion method, based on the specific child situation
+    //4. reconnect the nodes to the parent of deleted node after it is removed (if necessary)
+    func minimum () -> NodelessBST {
+        var parent = self
+        while case let next? = parent.left {
+            parent = next
+        }
+        return parent
+    }
+    
+    func maximum () -> NodelessBST {
+        var parent = self
+        while case let next? = parent.right {
+            parent = next
+        }
+        return parent
+    }
+    
+    func search(value: T) -> NodelessBST? {
+        if value < self.value {
+            return left?.search(value)
+        } else if value > self.value {
+            return right?.search(value)
+        } else {return self
+      }
+    }
+    
+    func deleteNode () -> NodelessBST? {
+        //we pass in the node that we are deleting, and must find out what to do with the children, if they exist. If there is a left child, then we mark that child as the one that will be replacing the node being removed
+        let replacementNode: NodelessBST?
+        
+        if let left = left {
+            if let right = right {
+                // if the node being deleted has two children
+                replacementNode = deleteNodeWithBothChildren(left, right)
+            }
+            else {
+                // we only have a left child
+                replacementNode = left
+            }
+        }
+        else if let right = right {
+            replacementNode = right
+        }
+        else {
+            replacementNode = nil
+        }
+        reconnectParentToNode(replacementNode)
+        
+        // we have reconnected the parent node of deleted node to the children, if there are any. Our node is floating around, so let's nullify its pointers
+        self.parent = nil
+        left = nil
+        right = nil
+        
+        return replacementNode
+    }
+    
+    private func deleteNodeWithBothChildren (left: NodelessBST?, _ right: NodelessBST?) -> NodelessBST {
+        //get minimum of right subtree to replace node we are deleting (could also be maximum of left subtree)
+        let successor = right!.minimum()
+        //delete the minimum since we are moving it
+        successor.deleteNode()
+        //attach left node to new successor
+        successor.left = left
+        left?.parent = successor
+        
+        if right !== successor {
+            successor.right = right
+            right?.parent = successor
+        }
+        else {
+            successor.right = right
+        }
+        return successor
+    }
+   
+    private func reconnectParentToNode(node: NodelessBST?) {
+        if let parent = parent {
+            if isLeftChild {
+                parent.left = node
+            }
+            else {
+                parent.right = node
+            }
+        }
+        node?.parent = parent
+    }
+    
+    func height() -> Int {
+        if isLeaf {
+            return 0
+        } else {
+            //compares which is greater and returns that result
+            return 1 + max(left?.height() ?? 0, right?.height() ?? 0)
         }
     }
 }

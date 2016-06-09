@@ -11,16 +11,16 @@ import UIKit
 var selectionSorter = SelectionSort()
 var insertionSorter = InsertionSort()
 var binarySearcher = BinarySearch()
-let tree = NodelessBST<Int>(array: [4,9,12,20,3,1])
-let tree2 = BinarySearchTree<Int>(array: [234,45,6,1,900,956,901,2])
+let tree = NodelessBST<Int>(array: [15,17,16,25,18,30,9,5,11,3,7])
+let tree2 = BinarySearchTree<Int>(array: [4,9,12,20,3])
 
 class AlgoDemoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.selectionSort()
-        self.insertionSort()
-        self.binarySearch()
+        //self.selectionSort()
+        //self.insertionSort()
+        //self.binarySearch()
         self.binaryTree()
     }
 
@@ -48,6 +48,12 @@ class AlgoDemoViewController: UIViewController {
     
     func binaryTree () {
         print(tree)
-        print(tree2)
+        print(tree2.count)
+//        if let node = tree.search(17) {
+//            print(tree)
+//            node.deleteNode()
+//            print(tree)
+//        }
+        print(tree2.minimum().value)
     }
 }

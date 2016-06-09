@@ -49,22 +49,24 @@ class BinarySearchTreeNode<T: Comparable>: NSObject {
         return false
     }
 
-    var hasLeftNode: Bool {
-        return self.left != nil
+    var hasOnlyLeftNode: Bool {
+        return (self.left != nil && self.right == nil)
     }
     
-    var hasRightNode: Bool {
-        return self.right != nil
+    var hasOnlyRightNode: Bool {
+        return (self.right != nil && self.left == nil)
     }
     
     var hasAnyChild: Bool {
-        return hasLeftNode || hasRightNode
+        return hasOnlyLeftNode || hasOnlyRightNode
     }
     
     var hasBothChildren: Bool {
-        return hasLeftNode && hasRightNode
+        return (self.left != nil && self.right != nil)
     }
 
+    
+    // problem when trying to print out description ->  we call this from our customstringconvertible extension on the tree, but for some reason our overridden var description misses a few BST nodes when printing.
     override var description: String {
         var s = ""
         if let left = left {

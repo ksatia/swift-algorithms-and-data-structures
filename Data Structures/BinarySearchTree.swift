@@ -73,21 +73,136 @@ class BinarySearchTree<T: Comparable> {
             }
         }
     }
+    
+    func searchForValue(value:T) -> BinarySearchTreeNode<T>? {
+        guard rootNode != nil else {
+            return nil
+        }
+            return searchTreeForValue(value, parent: rootNode!)
+    }
+    
+    func searchTreeForValue(value:T, parent: BinarySearchTreeNode<T>) -> BinarySearchTreeNode<T>? {
+        if value < parent.value {
+            if let left = parent.left {
+            return searchTreeForValue(value, parent: left)
+            }
+        }
+        else if value > parent.value {
+            if let right = parent.right {
+                return searchTreeForValue(value, parent: right)
+            }
+        }
+        return parent
+    }
+    
+    func maximum () -> BinarySearchTreeNode<T> {
+        var parent = rootNode
+        while case let next? = parent!.right {
+            parent = next
+            }
+        return parent!
+    }
+    
+    func minimum () -> BinarySearchTreeNode<T> {
+        var parent = rootNode
+        while case let next? = parent!.left {
+            parent = next
+        }
+        return parent!
+    }
+
+    func deleteNode(value:T) {
+        //retrieve node by reference using search function
+        if let deletedNode = self.searchForValue(value) {
+            //if our node to delete has both kids
+            if deletedNode.hasBothChildren {
+                deleteNodeWithTwoChildren(left: deletedNode.left!, right: deletedNode.right!)
+            }
+                //if our node to delete has one kid
+            else if (deletedNode.hasOnlyLeftNode || deletedNode.hasOnlyRightNode) {
+                deleteNodeWithOneChild(&deletedNode)
+            }
+                //our node is a leaf node
+            else {
+                deleteLeafNode(&deletedNode)
+            }
+        }
+    }
+
+    func deleteNodeWithTwoChildren (left left:BinarySearchTreeNode<T>, right:BinarySearchTreeNode<T>) {
+        
+    }
+    
+    //WE HAVE TO PASS ADDRESS OF NODE NOW SINCE ARGUMENT IS INOUT
+    //try different method - detect if the node being deleted is left or right, find the node that will replace it, and call our "replace" function
+    // get deleted nodes parent. if deleted node is left child of that parent, AND the deletedNode has only a left child, parent.left = deletedNode.left + vice versa. Set deletedNode pointers to nil. No return value needed.
+    
+    func deleteNodeWithOneChild (inout node: BinarySearchTreeNode<T>?) {
+        if let deletedNode = node {
+            guard let parent = deletedNode.parent else {
+                //we are dealing with the root node in a single node tree
+                if deletedNode.hasOnlyLeftNode {
+                    rootNode = deletedNode.left
+                }
+                else {
+                    rootNode = deletedNode.right
+                }
+                //nullify the rootNode parent and set node we deleted (rootNode) to nil
+                rootNode?.parent = nil
+                node = nil
+            }
+            
+            
+            //outside of the guard statement here, we aren't dealing with root node
+            //if the deleted node is a right node, we will be replacing the parents right node position
+            if deletedNode.isRightNode {
+                if deletedNode.hasOnlyRightNode {
+                parent.right = deletedNode.right
+                }
+                else {
+                    parent.right = deletedNode.left
+                }
+            }
+            //if the deleted node is a left node, we will be replacing the parents left node position
+            else {
+                if deletedNode.hasOnlyLeftNode {
+                    parent.left = deletedNode.left
+                }
+                else {
+                    parent.left = deletedNode.right
+                }
+            }
+        }
+    }
+    
+    // this function deletes the node and sets pointers appropriately
+    func deleteLeafNode(inout node: BinarySearchTreeNode<T>?) {
+        if let deletedNode = node {
+        guard let parent = deletedNode.parent else {
+            //we have a root node and are removing it
+            rootNode = nil
+            return
+        }
+        //if the deleted node is a left child
+        if deletedNode.isLeftNode {
+            parent.left = nil
+        }
+        else {
+            parent.right = nil
+        }
+        node = nil
+    }
+}
+    
+//    func connectParentToNewNode(replacement: BinarySearchTreeNode<T>) {
+//        
+//    }
+    
 }
 
 
 extension BinarySearchTree: CustomStringConvertible {
     var description: String {
-//        var s = ""
-//        if let left = rootNode?.left {
-//            s += "((\(left.description)) <- "
-//        }
-//        s += "\(rootNode?.left!.value)"
-//        if let right = rootNode?.right {
-//            s += " -> (\(right.description))"
-//        }
-//        return s
-//    }
         if let root = rootNode {
             return root.description
         }
