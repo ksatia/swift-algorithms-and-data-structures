@@ -43,7 +43,7 @@
 //    }
 //    
 //    deinit {
-//        print("de inited")
+//        print("de intiialized")
 //        ptr.destroy(capacity)
 //        ptr.dealloc(capacity)
 //    }

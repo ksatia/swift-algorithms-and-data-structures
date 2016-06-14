@@ -57,7 +57,7 @@ class BinarySearchTreeNode<T: Comparable>: NSObject {
         return (self.right != nil && self.left == nil)
     }
     
-    var hasAnyChild: Bool {
+    var hasOnlyOneChild: Bool {
         return hasOnlyLeftNode || hasOnlyRightNode
     }
     

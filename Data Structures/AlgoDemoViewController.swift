@@ -12,7 +12,7 @@ var selectionSorter = SelectionSort()
 var insertionSorter = InsertionSort()
 var binarySearcher = BinarySearch()
 let tree = NodelessBST<Int>(array: [15,17,16,25,18,30,9,5,11,3,7])
-let tree2 = BinarySearchTree<Int>(array: [4,9,12,20,3])
+let tree2 = BinarySearchTree<Int>(array: [14,12,16,15,20])
 
 class AlgoDemoViewController: UIViewController {
     
@@ -54,6 +54,9 @@ class AlgoDemoViewController: UIViewController {
 //            node.deleteNode()
 //            print(tree)
 //        }
-        print(tree2.minimum().value)
+//        print(tree2.minimum(self.rootNode).value)
+        tree2.deleteNode(14)
+        print(tree2)
+        
     }
 }
