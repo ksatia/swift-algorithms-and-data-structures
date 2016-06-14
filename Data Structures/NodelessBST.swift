@@ -187,7 +187,7 @@ class NodelessBST<T: Comparable> {
             right?.parent = successor
         }
         else {
-            successor.right = right
+            successor.right = nil
         }
         return successor
     }

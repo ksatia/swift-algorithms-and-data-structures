@@ -74,14 +74,12 @@ class BinarySearchTree<T: Comparable> {
     }
     
     
-    
     func searchForValue(value:T) -> BinarySearchTreeNode<T>? {
         guard rootNode != nil else {
             return nil
         }
             return searchTreeForValue(value, parent: rootNode!)
     }
-    
     
     
     func searchTreeForValue(value:T, parent: BinarySearchTreeNode<T>) -> BinarySearchTreeNode<T>? {
@@ -99,7 +97,6 @@ class BinarySearchTree<T: Comparable> {
     }
     
     
-    
     func maximum () -> BinarySearchTreeNode<T> {
         var parent = rootNode
         while case let next? = parent!.right {
@@ -109,7 +106,6 @@ class BinarySearchTree<T: Comparable> {
     }
     
     
-    
     func minimum (subTreeRoot: BinarySearchTreeNode<T>) -> BinarySearchTreeNode<T> {
         var parent = subTreeRoot
         while case let next? = parent.left {
@@ -117,7 +113,6 @@ class BinarySearchTree<T: Comparable> {
         }
         return parent
     }
-    
     
 
     func deleteNode(value:T) {
@@ -138,93 +133,51 @@ class BinarySearchTree<T: Comparable> {
         }
     }
     
-    
 
-    func deleteNodeWithTwoChildren (node:BinarySearchTreeNode<T>) {
+    func deleteNodeWithTwoChildren (node:BinarySearchTreeNode<T>?) {
         //let's use far left node in right subtree (node.right.minimum). We must replace the node to delete with that one, reconnect pointers and deallocate deleted node.
-        let minNode = minimum(node.right!)
-        
-        //Check to see if dealing with root. List of operations -> reassign root node, change right and left children of rootNode, change parents of those children, nullify minimum node, nullify deleted node
-//        guard let parent = deletionNode!.parent else {
-//            rootNode = minNode
-//            minNode.right = deletionNode!.right
-//            minNode.left = deletionNode!.left
-//            deletionNode!.right!.parent = minNode
-//            deletionNode!.left!.parent = minNode
-//            rootNode?.parent = nil
-//            deletionNode = nil
-//            return
-//            }
-        self.swap(node, replacement: minNode)
-    }
-    
-    
-    
-    func swap (original: BinarySearchTreeNode<T>?, replacement: BinarySearchTreeNode<T>) {
-        //16 still has left child node even though we removed our replacement. problem is that we set root to replacement, so all operations there are equivalent.
-        var og = original
+        let replacement = minimum(node!.right!)
+        var og = node
         let replacementParent = replacement.parent
+        // if the min node is a right node, the parent must now have a nil right child
+        if replacement.isRightNode {
+            replacementParent?.right = nil
+        }
+            // if the min node is a left node, the parent must now have a nil left child
+        else if replacement.isLeftNode {
+            replacementParent?.left = nil
+        }
+        
+        //detatch the min node from parent
+        replacement.parent = nil
+        
         if let orig = og {
-            if orig.isLeftNode {
+            //if we are deleting the root
+            if orig.parent == nil {
+                rootNode = replacement
+            }
+                //if we are deleting a left node
+            else if orig.isLeftNode {
                 let parent = orig.parent
                 parent?.left = replacement
                 replacement.parent = parent
             }
-            else if orig.isRightNode {
+                //if we are deleting a right node
+            else {
                 let parent = orig.parent
                 parent?.right = replacement
                 replacement.parent = parent
             }
-            else {
-                rootNode = replacement
-                rootNode?.parent = nil
-            }
-            
-            if replacement.isRightNode && replacement.isLeaf {
-                replacementParent?.right = nil
-            }
-            else if replacement.isLeftNode && replacement.isLeaf{
-                replacementParent?.left = nil
-            }
-            
+            // original node always has two children, so we must connect both to the replacement
             replacement.right = orig.right
             replacement.left = orig.left
             orig.right?.parent = replacement
             orig.left?.parent = replacement
-            
         }
         og = nil
-        
-//        
-//        if let og = orig {
-//        switch og {
-//            // we have a left node to delete
-//        case og.isLeftNode:
-//            let parent = og.parent
-//            parent?.left = replacement
-//            break
-//        // we have a right node to delete
-//        case og.isRightNode:
-//            let parent = og.parent
-//            parent?.right = replacement
-//            break
-//        default:
-//            rootNode = replacement
-//            rootNode?.parent = nil
-//            break
-//            }
-//            replacement.right = og.right
-//            replacement.left = og.left
-//            og.right?.parent = replacement
-//            og.left?.parent = replacement
-//        }
-//        orig = nil
     }
     
     
-    
-    // this function deletes a node with one child and sets pointers appropriately
-    // to avoid explicitly unwrapping optional node argument, set it to inout as a parameter
     func deleteNodeWithOneChild (node: BinarySearchTreeNode<T>?) {
         var deletedNode = node
             guard let parent = deletedNode!.parent else {
@@ -263,7 +216,6 @@ class BinarySearchTree<T: Comparable> {
         }
     
     
-    // this function deletes the node and sets pointers appropriately
     func deleteLeafNode(node: BinarySearchTreeNode<T>?) {
         var deletedNode = node
         guard let parent = deletedNode!.parent else {
