@@ -16,7 +16,7 @@ class StructuresDemoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.listOperations()
+        self.listOperations()
         //self.stackOperations()
         //self.queueOperations()
     }
@@ -42,6 +42,8 @@ class StructuresDemoViewController: UIViewController {
         
         //make sure sizeOfList var returns properly in a subscript GET
         print(linkedList[(linkedList.sizeOfList-1)])
+        print(linkedList.tail?.next?.value)
+        
     }
     
     func stackOperations () {

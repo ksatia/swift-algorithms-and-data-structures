@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow(frame:UIScreen.mainScreen().bounds)
         
-        let rootVC : UIViewController = AlgoDemoViewController ()
+        let rootVC : UIViewController = StructuresDemoViewController ()
         if let window = self.window {
             window.rootViewController = rootVC
             window.makeKeyAndVisible()

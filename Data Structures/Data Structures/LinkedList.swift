@@ -69,8 +69,9 @@ class LinkedList<T> {
     
     func removeItemFromTail () {
         if let tail = self.tail {
-            tail.prev?.next = tail.next
-            self.tail = tail.prev
+            let newTail = tail.prev
+            newTail?.next = nil
+            self.tail = newTail
         }
         count -= 1
     }
