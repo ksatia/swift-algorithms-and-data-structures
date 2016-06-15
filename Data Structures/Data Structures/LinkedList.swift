@@ -87,7 +87,7 @@ class LinkedList<T> {
                 self.head = root.next
                 return
             }
-            if index == count {
+            if index == count-1 {
                 self.removeItemFromTail()
                 return
             }

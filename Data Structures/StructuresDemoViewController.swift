@@ -42,8 +42,7 @@ class StructuresDemoViewController: UIViewController {
         
         //make sure sizeOfList var returns properly in a subscript GET
         print(linkedList[(linkedList.sizeOfList-1)])
-        print(linkedList.tail?.next?.value)
-        
+        linkedList.removeItem(atIndex: 4)
     }
     
     func stackOperations () {
