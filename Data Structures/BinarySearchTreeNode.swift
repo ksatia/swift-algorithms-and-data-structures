@@ -74,7 +74,7 @@ class BinarySearchTreeNode<T: Comparable>: NSObject {
         }
         s += "\(value)"
         if let right = right {
-            s += " -> (\(right.value))"
+            s += " -> (\(right.description))"
         }
         return s
     }
