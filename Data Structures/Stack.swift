@@ -24,10 +24,6 @@ class Stack <T> {
         let peekIndex = list.sizeOfList-1
         return list[peekIndex]
     }
-
-    func print (){
-        list.printList ()
-    }
 }
 
 extension Stack: CustomStringConvertible {
