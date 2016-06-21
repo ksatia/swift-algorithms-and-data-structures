@@ -150,12 +150,6 @@ class LinkedList<T> {
         }
     }
 
-
-
-    func printList () {
-        print(self)
-    }
-    
 }
 
 
