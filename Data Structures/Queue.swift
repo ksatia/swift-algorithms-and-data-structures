@@ -10,13 +10,13 @@ import UIKit
 
 // we will implement a queue using our linked list
 class Queue <T> {
-    private var list = LinkedList<T> ()
+    fileprivate var list = LinkedList<T> ()
     var isEmpty: Bool {
         return list.isEmpty
     }
     
     
-    func enqueue (value:T) {
+    func enqueue (_ value:T) {
         list.addToTail(value)
     }
     

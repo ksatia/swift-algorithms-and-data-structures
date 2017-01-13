@@ -11,8 +11,8 @@ import UIKit
 
 class LinkedList<T> {
     typealias Node = LinkedListNode<T>
-    private var count = 0
-    private var head: Node?
+    fileprivate var count = 0
+    fileprivate var head: Node?
     var tail: Node?
     
     // isEmpty can simply be a computed property, similar to how it is in CollectionType
@@ -25,7 +25,7 @@ class LinkedList<T> {
     }
     
     
-    func addToTail (value:T) {
+    func addToTail (_ value:T) {
         let newNode = LinkedListNode(value: value)
         if let tail = tail {
             tail.next = newNode
@@ -40,7 +40,7 @@ class LinkedList<T> {
     }
     
     //external parameter name being used here. "index" is used internally, argument is named "atIndex" when accessed through API
-    func insert (value: T, atIndex index: Int) {
+    func insert (_ value: T, atIndex index: Int) {
         if count < index || index < 0 {
             print ("index is outside of range")
             return
@@ -156,10 +156,10 @@ class LinkedList<T> {
 //MARK "PROTOCOL EXTENSIONS"
 
 
-extension LinkedList : SequenceType {
-func generate() -> AnyGenerator<Node> {
+extension LinkedList : Sequence {
+func makeIterator() -> AnyIterator<Node> {
     var currentNode = self.head
-    return AnyGenerator {
+    return AnyIterator {
         if let node = currentNode {
             defer { currentNode = node.next }
             return node
@@ -178,7 +178,7 @@ extension LinkedList: CustomStringConvertible {
        // while currentNode != nil {
             for _ in 0...count-1 {
                 //description += (String(currentNode.value) + " " )
-                description += ("\"" + (String(currentNode.value)) + "\"" + " is at index: \(currentIndex)\n")
+                description += ("\"" + (String(describing: currentNode.value)) + "\"" + " is at index: \(currentIndex)\n")
                 if let nextNode = currentNode.next {
                 currentNode = nextNode
                 currentIndex += 1

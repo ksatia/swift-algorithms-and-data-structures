@@ -11,7 +11,6 @@
 		2A18665E1D06233C00F8C984 /* NodelessBST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18665D1D06233C00F8C984 /* NodelessBST.swift */; };
 		2ABC35131CF4C9FF0093B18A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC35121CF4C9FF0093B18A /* AppDelegate.swift */; };
 		2ABC351A1CF4C9FF0093B18A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ABC35191CF4C9FF0093B18A /* Assets.xcassets */; };
-		2ABC351D1CF4C9FF0093B18A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ABC351B1CF4C9FF0093B18A /* LaunchScreen.storyboard */; };
 		2ABC35251CF4CA370093B18A /* LinkedListNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC35241CF4CA370093B18A /* LinkedListNode.swift */; };
 		2ABC35271CF4CA530093B18A /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC35261CF4CA530093B18A /* LinkedList.swift */; };
 		2ABC352B1CF5190C0093B18A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC352A1CF5190C0093B18A /* Stack.swift */; };
@@ -32,7 +31,6 @@
 		2ABC350F1CF4C9FF0093B18A /* Data Structures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Data Structures.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ABC35121CF4C9FF0093B18A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Data Structures/AppDelegate.swift"; sourceTree = "<group>"; };
 		2ABC35191CF4C9FF0093B18A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2ABC351C1CF4C9FF0093B18A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2ABC351E1CF4C9FF0093B18A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2ABC35241CF4CA370093B18A /* LinkedListNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedListNode.swift; sourceTree = "<group>"; };
 		2ABC35261CF4CA530093B18A /* LinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				2ABC35191CF4C9FF0093B18A /* Assets.xcassets */,
-				2ABC351B1CF4C9FF0093B18A /* LaunchScreen.storyboard */,
 				2ABC351E1CF4C9FF0093B18A /* Info.plist */,
 			);
 			name = "Support Files";
@@ -189,6 +186,7 @@
 					2ABC350E1CF4C9FE0093B18A = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = S8FYWK3S68;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -215,7 +213,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2ABC351D1CF4C9FF0093B18A /* LaunchScreen.storyboard in Resources */,
 				2ABC351A1CF4C9FF0093B18A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,17 +243,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		2ABC351B1CF4C9FF0093B18A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2ABC351C1CF4C9FF0093B18A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2ABC351F1CF4C9FF0093B18A /* Debug */ = {
@@ -352,6 +338,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.karansatia.Data-Structures";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -363,6 +350,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.karansatia.Data-Structures";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

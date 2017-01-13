@@ -37,7 +37,7 @@ class BinarySearchTree<T: Comparable> {
         }
     }
     
-    func insert(value: T) {
+    func insert(_ value: T) {
         guard rootNode != nil else {
             rootNode = BinarySearchTreeNode<T>(value: value)
             return
@@ -47,7 +47,7 @@ class BinarySearchTree<T: Comparable> {
         }
     }
     
-    private func insertNode(value: T, parent: BinarySearchTreeNode<T>) {
+    fileprivate func insertNode(_ value: T, parent: BinarySearchTreeNode<T>) {
         //we've already done root nil checking with our guard statement in our earlier insert function
         // check to see if we should insert in left subtree
         if value < parent.value {
@@ -74,7 +74,7 @@ class BinarySearchTree<T: Comparable> {
     }
     
     
-    func searchForValue(value:T) -> BinarySearchTreeNode<T>? {
+    func searchForValue(_ value:T) -> BinarySearchTreeNode<T>? {
         guard rootNode != nil else {
             return nil
         }
@@ -82,7 +82,7 @@ class BinarySearchTree<T: Comparable> {
     }
     
     
-    func searchTreeForValue(value:T, parent: BinarySearchTreeNode<T>) -> BinarySearchTreeNode<T>? {
+    func searchTreeForValue(_ value:T, parent: BinarySearchTreeNode<T>) -> BinarySearchTreeNode<T>? {
         if value < parent.value {
             if let left = parent.left {
             return searchTreeForValue(value, parent: left)
@@ -106,7 +106,7 @@ class BinarySearchTree<T: Comparable> {
     }
     
     
-    func minimum (subTreeRoot: BinarySearchTreeNode<T>) -> BinarySearchTreeNode<T> {
+    func minimum (_ subTreeRoot: BinarySearchTreeNode<T>) -> BinarySearchTreeNode<T> {
         var parent = subTreeRoot
         while case let next? = parent.left {
             parent = next
@@ -115,7 +115,7 @@ class BinarySearchTree<T: Comparable> {
     }
     
 
-    func deleteNode(value:T) {
+    func deleteNode(_ value:T) {
         //retrieve node by reference using search function
         if let deletedNode = self.searchForValue(value) {
             //if our node to delete has both kids
@@ -134,7 +134,7 @@ class BinarySearchTree<T: Comparable> {
     }
     
 
-    func deleteNodeWithTwoChildren (node:BinarySearchTreeNode<T>?) {
+    func deleteNodeWithTwoChildren (_ node:BinarySearchTreeNode<T>?) {
         //let's use far left node in right subtree (node.right.minimum). We must replace the node to delete with that one, reconnect pointers and deallocate deleted node.
         let replacement = minimum(node!.right!)
         var og = node
@@ -178,7 +178,7 @@ class BinarySearchTree<T: Comparable> {
     }
     
     
-    func deleteNodeWithOneChild (node: BinarySearchTreeNode<T>?) {
+    func deleteNodeWithOneChild (_ node: BinarySearchTreeNode<T>?) {
         var deletedNode = node
             guard let parent = deletedNode!.parent else {
                 //we are dealing with the root node in a single node tree
@@ -216,7 +216,7 @@ class BinarySearchTree<T: Comparable> {
         }
     
     
-    func deleteLeafNode(node: BinarySearchTreeNode<T>?) {
+    func deleteLeafNode(_ node: BinarySearchTreeNode<T>?) {
         var deletedNode = node
         guard let parent = deletedNode!.parent else {
             //we have a root node and are removing it

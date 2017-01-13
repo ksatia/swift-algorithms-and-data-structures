@@ -14,13 +14,13 @@ class SelectionSort: NSObject {
     
 
     // simple swap function using reassignment instead of memory swapping
-    func swap (inout array: [Int], firstIndex: Int, secondIndex:Int) {
+    func swap (_ array: inout [Int], firstIndex: Int, secondIndex:Int) {
         let temp = array[firstIndex]
         array[firstIndex] = array[secondIndex]
         array[secondIndex] = temp
     }
     
-    func selectionSort (inout array: [Int]) -> Array<Int> {
+    func selectionSort (_ array: inout [Int]) -> Array<Int> {
         var minimumElement: Int
         for n in 0..<array.count { // loops from 0 to n-1
             // set minimum element equal to starting index being used for iteration

@@ -10,9 +10,9 @@ import UIKit
 
 // we will implement a stack using our linked list
 class Stack <T> {
-    private var list = LinkedList<T> ()
+    fileprivate var list = LinkedList<T> ()
     
-    func push (value: T) {
+    func push (_ value: T) {
         list.addToTail(value)
     }
     

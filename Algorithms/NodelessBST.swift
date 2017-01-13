@@ -86,11 +86,11 @@ class NodelessBST<T: Comparable> {
     
     
     
-    func insert(value: T) {
+    func insert(_ value: T) {
         insert(value, parent: self)
     }
     
-    private func insert (value: T, parent: NodelessBST) {
+    fileprivate func insert (_ value: T, parent: NodelessBST) {
         // if the value we're inserting is less than our root node, we check the left child to see if it exists. If it does exist, we recursively call our fuction and pass in the left node as the parent.
         if value < self.value {
             if let left = left {
@@ -134,7 +134,7 @@ class NodelessBST<T: Comparable> {
         return parent
     }
     
-    func search(value: T) -> NodelessBST? {
+    func search(_ value: T) -> NodelessBST? {
         if value < self.value {
             return left?.search(value)
         } else if value > self.value {
@@ -173,7 +173,7 @@ class NodelessBST<T: Comparable> {
         return replacementNode
     }
     
-    private func deleteNodeWithBothChildren (left: NodelessBST?, _ right: NodelessBST?) -> NodelessBST {
+    fileprivate func deleteNodeWithBothChildren (_ left: NodelessBST?, _ right: NodelessBST?) -> NodelessBST {
         //get minimum of right subtree to replace node we are deleting (could also be maximum of left subtree)
         let successor = right!.minimum()
         //delete the minimum since we are moving it
@@ -192,7 +192,7 @@ class NodelessBST<T: Comparable> {
         return successor
     }
    
-    private func reconnectParentToNode(node: NodelessBST?) {
+    fileprivate func reconnectParentToNode(_ node: NodelessBST?) {
         if let parent = parent {
             if isLeftChild {
                 parent.left = node
